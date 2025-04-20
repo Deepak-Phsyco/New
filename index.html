@@ -175,21 +175,47 @@
     function downloadCard() {
       const idCard = document.getElementById("idCard");
       const clone = idCard.cloneNode(true);
-      clone.style.margin = '0';
-      clone.style.maxWidth = '100%';
-      clone.style.border = 'none';
+      clone.style.border = '3px solid black';
       clone.style.boxShadow = 'none';
 
       const wrapper = document.createElement('div');
-      wrapper.style.padding = '30px';
-      wrapper.style.background = '#ffffff';
+      wrapper.style.width = '794px'; // A4 width in px at 96dpi
+      wrapper.style.height = '1123px'; // A4 height
+      wrapper.style.padding = '40px';
+      wrapper.style.background = '#fff';
+      wrapper.style.boxSizing = 'border-box';
+      wrapper.style.fontFamily = 'Merriweather, serif';
+
+      const heading = document.createElement('h1');
+      heading.innerText = 'KVD GITHUB TUTORIAL';
+      heading.style.color = '#2c3e50';
+      heading.style.marginBottom = '20px';
+
+      const para = document.createElement('p');
+      para.innerText = 'THIS ID IS GENERATED FOR JUST EXPERIMENTAL PURPOSE, IT HAS NO VALID USE IN REAL LIFE AND IT IS FAKE ✔';
+      para.style.fontSize = '16px';
+      para.style.marginBottom = '40px';
+
+      const bottom = document.createElement('p');
+      const now = new Date();
+      const dateStr = now.toLocaleDateString();
+      const timeStr = now.toLocaleTimeString();
+      bottom.innerHTML = `<br><strong>Date:</strong> ${dateStr} &nbsp; <strong>Time:</strong> ${timeStr}<br><br><strong>Created By:</strong> Patel Deepak & Smit ✔`;
+      bottom.style.marginTop = '60px';
+      bottom.style.fontSize = '14px';
+      bottom.style.borderTop = '1px solid #ccc';
+      bottom.style.paddingTop = '10px';
+
+      wrapper.appendChild(heading);
+      wrapper.appendChild(para);
       wrapper.appendChild(clone);
+      wrapper.appendChild(bottom);
 
       document.body.appendChild(wrapper);
 
       html2canvas(wrapper).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'id_card.png';
+        link.download = 'A4_Student_ID.pdf';
         link.href = canvas.toDataURL();
         link.click();
         document.body.removeChild(wrapper);
