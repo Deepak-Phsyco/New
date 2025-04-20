@@ -53,6 +53,7 @@
       max-width: 500px;
       position: relative;
       box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      justify-content: space-between;
     }
     .id-heading {
       position: absolute;
@@ -163,9 +164,13 @@
       wrapper.style.width = '794px';
       wrapper.style.height = '1123px';
       wrapper.style.padding = '40px';
-      wrapper.style.background = '#fff';
+      wrapper.style.background = '#f3f3f3';
       wrapper.style.fontFamily = 'Merriweather, serif';
       wrapper.style.position = 'relative';
+      wrapper.style.display = 'flex';
+      wrapper.style.flexDirection = 'column';
+      wrapper.style.alignItems = 'center';
+      wrapper.style.textAlign = 'center';
 
       const heading = document.createElement('h1');
       heading.innerText = 'KVD GITHUB TUTORIAL';
@@ -175,10 +180,11 @@
       const para = document.createElement('p');
       para.innerText = 'THIS ID IS GENERATED FOR JUST EXPERIMENTAL PURPOSE, IT HAS NO VALID USE IN REAL LIFE AND IT IS FAKE ✔';
       para.style.marginBottom = '40px';
+      para.style.maxWidth = '600px';
 
       const bottom = document.createElement('p');
       const now = new Date();
-      bottom.innerHTML = `<strong>Date:</strong> ${now.toLocaleDateString()} &nbsp; <strong>Time:</strong> ${now.toLocaleTimeString()}<br><br><strong>Created by:</strong> Patel Deepak & Smit ✔`;
+      bottom.innerHTML = `<strong>Date:</strong> ${now.toLocaleDateString()} &nbsp;&nbsp; <strong>Time:</strong> ${now.toLocaleTimeString()}<br><br><strong>Created by:</strong> Patel Deepak & Smit ✔`;
       bottom.style.marginTop = '60px';
       bottom.style.fontSize = '14px';
       bottom.style.borderTop = '1px solid #ccc';
@@ -187,13 +193,16 @@
       const fakeStamp = document.createElement('div');
       fakeStamp.innerText = 'FAKE';
       fakeStamp.style.position = 'absolute';
-      fakeStamp.style.bottom = '60px';
+      fakeStamp.style.bottom = '40px';
       fakeStamp.style.right = '40px';
-      fakeStamp.style.fontSize = '64px';
+      fakeStamp.style.fontSize = '80px';
       fakeStamp.style.fontWeight = 'bold';
-      fakeStamp.style.color = 'red';
-      fakeStamp.style.opacity = '0.3';
-      fakeStamp.style.transform = 'rotate(-15deg)';
+      fakeStamp.style.color = 'rgba(200,0,0,0.6)';
+      fakeStamp.style.border = '3px solid red';
+      fakeStamp.style.padding = '20px';
+      fakeStamp.style.borderRadius = '50%';
+      fakeStamp.style.transform = 'rotate(-25deg)';
+      fakeStamp.style.boxShadow = '0 0 10px rgba(0,0,0,0.2)';
 
       wrapper.appendChild(heading);
       wrapper.appendChild(para);
