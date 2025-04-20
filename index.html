@@ -66,6 +66,7 @@
       border-radius: 15px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.1);
       box-sizing: border-box;
+      flex-wrap: wrap;
     }
     .id-heading {
       position: absolute;
@@ -90,6 +91,7 @@
     }
     .id-photo {
       flex-shrink: 0;
+      margin-top: 10px;
     }
     .id-photo img {
       width: 110px;
@@ -127,7 +129,18 @@
     }
     #downloadBtn:hover {
       background-color: #1e8449;
-    }
+    }@media (max-width: 600px) {
+  .id-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  .id-details {
+    padding-right: 0;
+    text-align: center;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -179,8 +192,8 @@
       clone.style.boxShadow = 'none';
 
       const wrapper = document.createElement('div');
-      wrapper.style.width = '794px'; // A4 width in px at 96dpi
-      wrapper.style.height = '1123px'; // A4 height
+      wrapper.style.width = '794px';
+      wrapper.style.height = '1123px';
       wrapper.style.padding = '40px';
       wrapper.style.background = '#fff';
       wrapper.style.boxSizing = 'border-box';
@@ -206,16 +219,29 @@
       bottom.style.borderTop = '1px solid #ccc';
       bottom.style.paddingTop = '10px';
 
+      const fakeStamp = document.createElement('div');
+      fakeStamp.innerText = 'FAKE';
+      fakeStamp.style.position = 'absolute';
+      fakeStamp.style.bottom = '100px';
+      fakeStamp.style.right = '30px';
+      fakeStamp.style.color = 'red';
+      fakeStamp.style.fontSize = '60px';
+      fakeStamp.style.fontWeight = 'bold';
+      fakeStamp.style.transform = 'rotate(-20deg)';
+      fakeStamp.style.opacity = '0.4';
+
       wrapper.appendChild(heading);
       wrapper.appendChild(para);
       wrapper.appendChild(clone);
       wrapper.appendChild(bottom);
+      wrapper.appendChild(fakeStamp);
 
+      wrapper.style.position = 'relative';
       document.body.appendChild(wrapper);
 
       html2canvas(wrapper).then(canvas => {
         const link = document.createElement('a');
-        link.download = 'A4_Student_ID.pdf';
+        link.download = 'A4_Student_ID.png';
         link.href = canvas.toDataURL();
         link.click();
         document.body.removeChild(wrapper);
