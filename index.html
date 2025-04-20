@@ -79,9 +79,15 @@
       margin: 8px 0;
       font-size: 16px;
     }
+    .photo-container {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .photo {
-      width: 110px;
-      height: 110px;
+      width: 130px;
+      height: 130px;
       border-radius: 65%;
       object-fit: cover;
       border: 2px solid #2c3e50;
@@ -111,7 +117,7 @@
         text-align: center;
       }
       .details {
-        padding: 0;
+        padding: 20px 0;
       }
     }
   </style>
@@ -147,7 +153,9 @@
               <p><strong>Roll No:</strong> ${roll}</p>
               <p class="certified">Certified by KVD Coders</p>
             </div>
-            <img class="photo" src="${e.target.result}" alt="Photo">
+            <div class="photo-container">
+              <img class="photo" src="${e.target.result}" alt="Photo">
+            </div>
           </div>
         `;
         document.getElementById('downloadBtn').style.display = 'inline-block';
